@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  django:
+    build: ./djangotutorial
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./djangotutorial:/app
+    environment:
+      - DEBUG=1
+    command: python manage.py runserver 0.0.0.0:8000
+
+  dash:
+    build: ./dash
+    ports:
+      - "8050:8050"
+    volumes:
+      - ./dash:/app
+    environment:
+      - DEBUG=1
+    command: python app.py
